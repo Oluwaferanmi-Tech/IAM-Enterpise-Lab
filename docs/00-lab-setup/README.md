@@ -51,6 +51,11 @@ This meant:
 
 ![Azure VNet and three VMs](images/window_server_config.png)
 
+![Windows](images/windows11Setup.png)
+
+![Kali Linux](images/kali.png)
+
+
 Along the way, I hit an Azure-specific snag too — certain VM sizes returned `NotAvailableForSubscription` on a free trial account. Switching to a newer VM size series (rather than assuming it was a regional capacity issue) resolved it.
 
 ## Challenges
