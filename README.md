@@ -71,6 +71,6 @@ iam-enterprise-lab/
 
 ## Connect
 
-Following along on [LinkedIn](#www.linkedin.com/in/oluwaferanmi-bamikole-44a222309
+Following along on [LinkedIn](www.linkedin.com/in/oluwaferanmi-bamikole-44a222309
 
 ) as this lab progresses.
