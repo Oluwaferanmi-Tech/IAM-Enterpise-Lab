@@ -30,7 +30,7 @@ This meant leaving the officially-supported Evaluation Center ISO behind, since 
 
 The first build I tried failed with `EMPTY_FILELIST` — it had been removed from Microsoft's servers between being indexed and my attempt to download it, a known risk with fast-cycling Insider Canary builds. A second, more recently-indexed build succeeded.
 
-![Successful ISO build](EmulationAttempt.png)
+![Successful ISO build](docs/00-lab-setup/iamges/EmulationAttempt.png)
 
 ### Windows 11 and Kali Linux: the easy parts
 
