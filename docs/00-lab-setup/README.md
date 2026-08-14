@@ -30,7 +30,7 @@ This meant leaving the officially-supported Evaluation Center ISO behind, since 
 
 The first build I tried failed with `EMPTY_FILELIST` — it had been removed from Microsoft's servers between being indexed and my attempt to download it, a known risk with fast-cycling Insider Canary builds. A second, more recently-indexed build succeeded.
 
-![Successful ISO build](docs/00-lab-setup/iamges/EmulationAttempt.png)
+![Successful ISO build](iamges/EmulationAttempt.png)
 
 ### Windows 11 and Kali Linux: the easy parts
 
@@ -49,7 +49,7 @@ This meant:
 - Provisioning Windows Server 2025 (a genuine, officially-supported release — no emulation, no Insider builds) on that network
 - Migrating Windows 11 and Kali Linux to Azure as well, to keep all three machines on one consistent, mutually-reachable network rather than splitting environments
 
-![Azure VNet and three VMs](window_server_config.png)
+![Azure VNet and three VMs](iamges/window_server_config.png)
 
 Along the way, I hit an Azure-specific snag too — certain VM sizes returned `NotAvailableForSubscription` on a free trial account. Switching to a newer VM size series (rather than assuming it was a regional capacity issue) resolved it.
 
