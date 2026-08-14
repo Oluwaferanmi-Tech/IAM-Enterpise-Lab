@@ -1,6 +1,6 @@
 # Enterprise IAM Lab
 
-A hands-on Identity and Access Management lab built while working through an IAM course and preparing for the Microsoft SC-300 (Identity and Access Administrator) exam.
+A hands-on Identity and Access Management lab built while preparing for the Microsoft SC-300 (Identity and Access Administrator) exam.
 
 ## Overview
 
