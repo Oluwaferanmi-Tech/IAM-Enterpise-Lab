@@ -10,19 +10,13 @@ Before touching any IAM concepts, I needed a working lab environment: a Windows 
 
 My laptop is an M1 MacBook Pro, which meant the standard Windows Server 2025 evaluation ISO — an x86-64 build — couldn't run natively. UTM (free, open-source) supports x86 emulation on Apple Silicon via QEMU, so I started there.
 
-![UTM emulation setup](images/01-utm-emulate-setup.png)
-
 Getting the VM to boot at all required manually navigating a UEFI shell (`fs0:` / `fs1:`, `cd efi\boot`, `bootx64.efi`) since the firmware couldn't auto-detect the installer.
-
-![UEFI shell navigation](images/02-uefi-shell.png)
 
 Once past that, first-boot times under emulation were genuinely long — sometimes over an hour with no visual feedback, easy to mistake for a frozen VM.
 
 ### The product-key bug
 
 After finally reaching Windows Setup, I hit a wall: `Setup has failed to validate the product key`, even after explicitly selecting "I don't have a product key." This turned out to be a known, documented bug in UTM's GitHub discussions affecting other users on the same emulation path — not something specific to my setup.
-
-![Product key validation error](images/03-product-key-error.png)
 
 ### Attempt 2: Switching to native ARM64 virtualization
 
@@ -34,11 +28,9 @@ This meant leaving the officially-supported Evaluation Center ISO behind, since 
 - Using UUP dump to locate and download an ARM64 Insider Preview build
 - Running a conversion script to assemble the downloaded files into a bootable ISO
 
-![UUP dump build selection](images/04-uupdump-arm64-search.png)
-
 The first build I tried failed with `EMPTY_FILELIST` — it had been removed from Microsoft's servers between being indexed and my attempt to download it, a known risk with fast-cycling Insider Canary builds. A second, more recently-indexed build succeeded.
 
-![Successful ISO build](images/05-iso-build-success.png)
+![Successful ISO build](EmulationAttempt.png)
 
 ### Windows 11 and Kali Linux: the easy parts
 
@@ -47,7 +39,6 @@ By contrast, the other two VMs were straightforward:
 - **Kali Linux** came from UTM's built-in gallery — a pre-built, official ARM64 image with no manual ISO work at all.
 - **Windows 11** used a similar native-ARM approach via CrystalFetch, a tool purpose-built for fetching official Windows ARM64 images, and installed cleanly on the first real attempt.
 
-![Kali and Windows 11 running](images/06-kali-and-win11.png)
 
 ### The pivot to Azure
 
@@ -58,7 +49,7 @@ This meant:
 - Provisioning Windows Server 2025 (a genuine, officially-supported release — no emulation, no Insider builds) on that network
 - Migrating Windows 11 and Kali Linux to Azure as well, to keep all three machines on one consistent, mutually-reachable network rather than splitting environments
 
-![Azure VNet and three VMs](images/07-azure-vnet-three-vms.png)
+![Azure VNet and three VMs](window_server_config.png)
 
 Along the way, I hit an Azure-specific snag too — certain VM sizes returned `NotAvailableForSubscription` on a free trial account. Switching to a newer VM size series (rather than assuming it was a regional capacity issue) resolved it.
 
