@@ -14,6 +14,9 @@ Installed AD DS on the `Sever` VM and promoted it to a Domain Controller for a n
 
 Designed an OU layout for the organization and created accounts within it, including an IT admin account (`admin.it@identity.com`) for day-to-day management tasks.
 
+![OU](images/part2_OU_reation3.png)
+![OU](images/part2_OU_Creation.png)
+![OU](images/part2_OU_Creation2.png)
 ### Joining PC01 to the domain
 
 This is where things went sideways. The standard process is: set a static IP on the client so it can reliably reach the DC, point DNS at the DC, then join the domain. On a local hypervisor this is a non-event. On Azure, it took down the entire VM.
