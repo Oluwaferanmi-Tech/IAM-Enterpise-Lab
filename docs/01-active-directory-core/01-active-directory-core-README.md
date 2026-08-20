@@ -47,9 +47,15 @@ After the domain join succeeded, tried logging in over RDP as `admin.it@identity
 
 Fixed by logging in as the working local admin, opening `lusrmgr.msc`, and adding `admin.it` to the local **Remote Desktop Users** group on the client machine.
 
+![admin](images/Part2_Admin.png)
+
 ### Configuring the security baseline GPO
 
 Applied a baseline GPO to the domain once the client was stable. No surprises here — this part just worked.
+
+![GPO](images/Part2_GPO.png)
+
+![GPO](images/Part2_GPO2.png)
 
 ---
 
