@@ -14,7 +14,7 @@ Installed AD DS on the `Sever` VM and promoted it to a Domain Controller for a n
 
 Designed an OU layout for the organization and created accounts within it, including an IT admin account (`admin.it@identity.com`) for day-to-day management tasks.
 
-![OU](images/Part2_OU_reation3.png)
+![OU](images/Part2_OU_Creation3.png)
 
 ![OU](images/Part2_OU_Creation.png)
 
