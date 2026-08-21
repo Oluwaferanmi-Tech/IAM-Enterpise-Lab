@@ -14,7 +14,7 @@ Walked through the full lifecycle: onboarding a new employee (account creation, 
 
 The core enterprise lesson here: never delete a user account immediately when someone leaves. Instead, disable it first and move it into a dedicated **Disabled-Users** OU, and only delete later after a retention period. This preserves an audit trail, allows for quick reversal if the offboarding was a mistake, and keeps historical access records intact for compliance — deleting immediately destroys all of that.
 
-![disable](iamges/user_disable.png)
+![disable](images/user_disable.png)
 
 ### Automating with PowerShell and CSVs
 
