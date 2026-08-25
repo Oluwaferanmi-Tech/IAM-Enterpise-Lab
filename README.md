@@ -32,8 +32,8 @@ Full writeup: [`docs/00-lab-setup/local-attempt-and-pivot.md`](docs/00-lab-setup
 
 - [x] **Module 1** — Introduction & Complete Lab Setup
 - [x] **Module 2** — Active Directory: Core Identity Store
-- [ ] **Module 3** — Identity Lifecycle Management
-- [ ] **Module 4** — Active Directory Hygiene
+- [x] **Module 3** — Identity Lifecycle Management
+- [x] **Module 4** — Active Directory Hygiene
 - [ ] **Module 5** — Authentication Deep Dive
 - [ ] **Module 6** — Service Accounts & Privileged Identities
 - [ ] **Module 7** — Role Based Access Control (RBAC)
