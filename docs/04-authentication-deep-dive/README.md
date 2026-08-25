@@ -1,22 +1,22 @@
-# Module 5: Authentication Deep Dive
+# Authentication: Kerberos, Fine-Grained Password Policies & RADIUS
 
 ## What I did
 
-This module moved past identity storage and into how authentication actually happens: Kerberos ticket-based auth, fine-grained password policies for privileged accounts, and RADIUS authentication via NPS — the last of which turned into the longest real troubleshooting chain of the lab so far, going from a completely silent failure to a specific, named root cause.
+With identity storage and lifecycle management in place, next up was authentication itself: Kerberos ticket-based auth, fine-grained password policies for privileged accounts, and RADIUS authentication via NPS — the last of which turned into the longest real troubleshooting chain in the lab so far, going from a completely silent failure to a specific, named root cause.
 
 ## Steps
 
-### Authentication concepts and Kerberos in action
+### Kerberos in action
 
-Covered how Windows domain authentication actually works under the hood — ticket-based auth via Kerberos rather than sending credentials on every request. Watched Kerberos tickets get issued in real time on a domain-joined machine (TGT on logon, service tickets issued as needed), which makes the concept concrete instead of just theoretical.
+Explored how Windows domain authentication actually works under the hood — ticket-based auth via Kerberos rather than sending credentials on every request. Watched Kerberos tickets get issued in real time on a domain-joined machine (TGT on logon, service tickets issued as needed), which makes the concept concrete instead of just theoretical.
 
 ### Fine-Grained Password Policy (FGPP)
 
 Built a Password Settings Object (PSO) to apply a stricter password policy to a specific group instead of relying on the single domain-wide default. This is the realistic enterprise pattern: privileged accounts (like IT admins) should have tighter password requirements than a general end-user account, and a single blanket policy for the whole domain can't express that — FGPP/PSOs are what let you actually differentiate.
 
-### RADIUS Authentication using NPS
+### RADIUS authentication using NPS
 
-This lab was the real test of the module. Set up FreeRADIUS client tools on Kali and used it to send test authentication requests against NPS running on the domain controller. Nothing worked on the first several attempts, and diagnosing why turned into a proper troubleshooting exercise.
+This was the real test. Set up FreeRADIUS client tools on Kali and used it to send test authentication requests against NPS running on the domain controller. Nothing worked on the first several attempts, and diagnosing why turned into a proper troubleshooting exercise.
 
 **Wrong target, wrong tools.** First attempt pointed `radtest` at Kali's own IP address instead of the Server. Got "No reply from server" — which, it turns out, means something very specific in RADIUS: not a rejection, just literally nobody listening. Only `freeradius-utils` (client tools) had been installed on Kali, not an actual RADIUS server, so testing against itself could never have worked regardless of the target IP being wrong too.
 
