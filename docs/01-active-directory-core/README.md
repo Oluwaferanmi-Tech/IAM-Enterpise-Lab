@@ -1,4 +1,4 @@
-# Module 2: Active Directory — Core Identity Store
+# Active Directory: Core Identity Store
 
 ## What I did
 
@@ -14,12 +14,9 @@ Installed AD DS on the `Sever` VM and promoted it to a Domain Controller for a n
 
 Designed an OU layout for the organization and created accounts within it, including an IT admin account (`admin.it@identity.com`) for day-to-day management tasks.
 
-![OU](images/part2_OU_creation3.png)
-
-![OU](images/Part2_OU_Creation.png)
-
-![OU](images/Part2_OU_Creation2.png)
-
+![Organizational unit structure in Active Directory](images/part2_OU_creation3.png)
+![Creating OUs for the company structure](images/Part2_OU_Creation.png)
+![OU structure with department containers](images/Part2_OU_Creation2.png)
 
 ### Joining PC01 to the domain
 
@@ -47,15 +44,14 @@ After the domain join succeeded, tried logging in over RDP as `admin.it@identity
 
 Fixed by logging in as the working local admin, opening `lusrmgr.msc`, and adding `admin.it` to the local **Remote Desktop Users** group on the client machine.
 
-![admin](images/Part2_Admin.png)
+![Adding admin.it to the Remote Desktop Users group](images/Part2_Admin.png)
 
 ### Configuring the security baseline GPO
 
 Applied a baseline GPO to the domain once the client was stable. No surprises here — this part just worked.
 
-![GPO](images/Part2_GPO.png)
-
-![GPO](images/Part2_GPO2.png)
+![Security baseline GPO configuration](images/Part2_GPO.png)
+![Security baseline GPO applied to the domain](images/Part2_GPO2.png)
 
 ---
 
