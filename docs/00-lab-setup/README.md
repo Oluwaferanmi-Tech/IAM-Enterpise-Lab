@@ -1,4 +1,4 @@
-# Module 0: Lab Setup
+# Lab Setup
 
 ## What I did
 
@@ -39,7 +39,6 @@ By contrast, the other two VMs were straightforward:
 - **Kali Linux** came from UTM's built-in gallery — a pre-built, official ARM64 image with no manual ISO work at all.
 - **Windows 11** used a similar native-ARM approach via CrystalFetch, a tool purpose-built for fetching official Windows ARM64 images, and installed cleanly on the first real attempt.
 
-
 ### The pivot to Azure
 
 Windows Server 2025 continued to be the sticking point even on the ARM64 path — build availability on UUP dump isn't guaranteed to stay stable, and I didn't want the reliability of my lab depending on which Insider build happened to still be hosted on a given day. At that point I made the call to stop fighting local virtualization for this one VM and move the environment to Azure instead.
@@ -50,11 +49,8 @@ This meant:
 - Migrating Windows 11 and Kali Linux to Azure as well, to keep all three machines on one consistent, mutually-reachable network rather than splitting environments
 
 ![Azure VNet and three VMs](images/window_server_config.png)
-
 ![Windows](images/windows11Setup.png)
-
 ![Kali Linux](images/kali.png)
-
 
 Along the way, I hit an Azure-specific snag too — certain VM sizes returned `NotAvailableForSubscription` on a free trial account. Switching to a newer VM size series (rather than assuming it was a regional capacity issue) resolved it.
 
