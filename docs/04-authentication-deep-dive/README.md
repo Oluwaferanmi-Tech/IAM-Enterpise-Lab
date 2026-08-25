@@ -10,9 +10,14 @@ With identity storage and lifecycle management in place, next up was authenticat
 
 Explored how Windows domain authentication actually works under the hood — ticket-based auth via Kerberos rather than sending credentials on every request. Watched Kerberos tickets get issued in real time on a domain-joined machine (TGT on logon, service tickets issued as needed), which makes the concept concrete instead of just theoretical.
 
+![kerberos](images/keberos.png)
+
 ### Fine-Grained Password Policy (FGPP)
 
 Built a Password Settings Object (PSO) to apply a stricter password policy to a specific group instead of relying on the single domain-wide default. This is the realistic enterprise pattern: privileged accounts (like IT admins) should have tighter password requirements than a general end-user account, and a single blanket policy for the whole domain can't express that — FGPP/PSOs are what let you actually differentiate.
+
+![pso](images/pso.png)
+![pso2](images/pso2.png)
 
 ### RADIUS authentication using NPS
 
@@ -27,6 +32,10 @@ This was the real test. Set up FreeRADIUS client tools on Kali and used it to se
 **From silence to a real rejection.** After registering Kali as a RADIUS client with a matching shared secret, the response changed from no reply to an actual `Access-Reject` — real progress, since it confirmed the client was now recognized and NPS was actively evaluating the request rather than ignoring it outright.
 
 **Finding the actual reason.** The reject itself didn't explain why. Went into the Security event log on the domain controller, found the NPS audit failure event (Event ID 6273), and pulled the specific Reason Code from the XML details: **Reason Code 66 — "the user attempted to use an authentication method that is not enabled on the matching network policy."** `radtest` sends PAP by default, and the Network Policy didn't have PAP enabled as an allowed method. Enabled it under the policy's Constraints → Authentication Methods, and the next test came back Access-Accept.
+
+![nps](images/nps.png)
+![nps2](images/nps2.png)
+![radius](images/radius.png)
 
 ---
 
