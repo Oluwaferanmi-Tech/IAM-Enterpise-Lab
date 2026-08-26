@@ -43,7 +43,7 @@ Full writeup: [`docs/00-lab-setup/local-attempt-and-pivot.md`](docs/00-lab-setup
 - [ ] **Module 11** — Identity Governance & Administration (IGA)
 - [ ] **Module 12** — Microsoft Entra ID: Fundamentals, Users & Groups
 - [ ] **Module 13** — Microsoft Entra ID: RBAC & Applications
-- [ ] *(additional modules added as the course progresses)*
+- [ ] *(additional features)*
 
 ## Skills & Topics Covered
 
