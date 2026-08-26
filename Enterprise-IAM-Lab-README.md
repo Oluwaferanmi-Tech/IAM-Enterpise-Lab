@@ -32,10 +32,10 @@ Full writeup: [`docs/00-lab-setup/local-attempt-and-pivot.md`](docs/00-lab-setup
 
 - [x] **Module 1** — Introduction & Complete Lab Setup
 - [x] **Module 2** — Active Directory: Core Identity Store
-- [ ] **Module 3** — Identity Lifecycle Management
-- [ ] **Module 4** — Active Directory Hygiene
-- [ ] **Module 5** — Authentication Deep Dive
-- [ ] **Module 6** — Service Accounts & Privileged Identities
+- [x] **Module 3** — Identity Lifecycle Management
+- [x] **Module 4** — Active Directory Hygiene
+- [x] **Module 5** — Authentication Deep Dive
+- [x] **Module 6** — Service Accounts & Privileged Identities
 - [ ] **Module 7** — Role Based Access Control (RBAC)
 - [ ] **Module 8** — PKI & Certificate Authority
 - [ ] **Module 9** — Single Sign-On (SSO)
@@ -43,7 +43,7 @@ Full writeup: [`docs/00-lab-setup/local-attempt-and-pivot.md`](docs/00-lab-setup
 - [ ] **Module 11** — Identity Governance & Administration (IGA)
 - [ ] **Module 12** — Microsoft Entra ID: Fundamentals, Users & Groups
 - [ ] **Module 13** — Microsoft Entra ID: RBAC & Applications
-- [ ] *(additional modules added as the course progresses)*
+- [ ] *(additional features)*
 
 ## Skills & Topics Covered
 
