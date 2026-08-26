@@ -14,9 +14,16 @@ Regular service accounts are just standard AD accounts with a password someone s
 
 A Group Managed Service Account solves this structurally rather than procedurally. Its password is generated and rotated automatically by Active Directory on a schedule (roughly every 30 days by default) — no human ever sets it, sees it, or has to remember to rotate it. Only computer accounts explicitly authorized to use the gMSA can actually retrieve its credential from AD, so even if an attacker compromises an unrelated machine, they can't just read a stored password and reuse it elsewhere.
 
+![gmsa](images/gmsa.png)
+![gmsa](images/gmsa2.png)
+![gmsa](images/gmsa3.png)
+
+
 ### Replacing a regular service account with a gMSA
 
 Took an existing service running under a regular service account and migrated it to a gMSA instead, going through the actual mechanics: authorizing the specific computer account to use the gMSA, updating the service to run under the new identity, and confirming it still functioned correctly afterward. Seeing the same service work identically under the gMSA — with none of the manual password management overhead — makes the security upgrade concrete rather than theoretical.
+
+![replace](images/change.png)
 
 ---
 
