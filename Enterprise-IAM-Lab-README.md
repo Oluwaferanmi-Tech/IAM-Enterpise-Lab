@@ -36,7 +36,7 @@ Full writeup: [`docs/00-lab-setup/local-attempt-and-pivot.md`](docs/00-lab-setup
 - [x] **Module 4** — Active Directory Hygiene
 - [x] **Module 5** — Authentication Deep Dive
 - [x] **Module 6** — Service Accounts & Privileged Identities
-- [ ] **Module 7** — Role Based Access Control (RBAC)
+- [x] **Module 7** — Role Based Access Control (RBAC)
 - [ ] **Module 8** — PKI & Certificate Authority
 - [ ] **Module 9** — Single Sign-On (SSO)
 - [ ] **Module 10** — Multi-Factor Authentication (MFA)
