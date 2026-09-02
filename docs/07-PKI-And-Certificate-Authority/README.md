@@ -10,6 +10,10 @@ Built out the PKI layer of the lab: stood up an internal Certificate Authority, 
 
 Installed and configured Active Directory Certificate Services to stand up an internal CA (`identity-CA`), so the domain could issue and trust its own certificates rather than depending on an external CA for internal-only authentication scenarios.
 
+![ca](images/ca_install.png)
+![ca](images/ca_install2.png)
+![ca](images/ca_create.png)
+
 ### Issuing and managing certificates
 
 Issued client authentication certificates to users through the CA and worked through the actual admin side of the certificate lifecycle — mapping issued certs to specific users and purposes rather than just generating them generically.
@@ -18,9 +22,16 @@ Issued client authentication certificates to users through the CA and worked thr
 
 Issuance is only half the lifecycle. Just as important is revocation: when a certificate is compromised or should no longer be trusted, it needs to actually stop being trusted immediately, not just quietly expire on its own schedule months or years later. Went through revoking a certificate and understanding how the Certificate Revocation List (CRL) is what clients actually check before trusting a presented certificate — revocation isn't real unless something downstream is checking for it.
 
+![ca](images/ca_revoke.png)
+![ca](images/ca_revoke2.png)
+
+
 ### Hitting a hard platform limitation on hardware-backed smart cards
 
 Tried provisioning a TPM-backed virtual smart card directly on the Windows 11 VM and hit a wall: Windows blocks TPM virtual smart card creation over any Terminal Services (RDP) session, by design — a security measure so an attacker with RDP access can't remotely provision a virtual credential. Since an Azure VM is only ever reachable over RDP, with no true physical console to fall back to, that specific hardware-backed path is essentially a dead end on cloud infrastructure rather than something more effort would fix.
+
+![ca](images/ca_smart_card.png)
+
 
 ### Certificate-based logon with a PIN instead of a password
 
