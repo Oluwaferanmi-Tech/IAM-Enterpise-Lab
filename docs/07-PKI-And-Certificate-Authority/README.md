@@ -30,7 +30,7 @@ Issuance is only half the lifecycle. Just as important is revocation: when a cer
 
 Tried provisioning a TPM-backed virtual smart card directly on the Windows 11 VM and hit a wall: Windows blocks TPM virtual smart card creation over any Terminal Services (RDP) session, by design — a security measure so an attacker with RDP access can't remotely provision a virtual credential. Since an Azure VM is only ever reachable over RDP, with no true physical console to fall back to, that specific hardware-backed path is essentially a dead end on cloud infrastructure rather than something more effort would fix.
 
-![ca](images/ca_smart_card.png)
+![ca](images/mart_card.png)
 
 
 ### Certificate-based logon with a PIN instead of a password
