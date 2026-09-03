@@ -18,13 +18,20 @@ MFA and passwordless authentication get talked about together but aren't the sam
 
 Set the OTP policy at the realm level, then configured an actual TOTP credential on a user account — the practical side of turning the concept into something a real login flow enforces.
 
+![otpuser](images/otpuser.png)
+
 ### Setting it up with Microsoft Authenticator
 
 Registered the account in Microsoft Authenticator via the setup QR code / key, then used the app's live 6-digit code to complete an actual login. This is the part that makes TOTP concrete rather than theoretical — the code in the app and the code Keycloak expects have to match within the same 30-second window, driven by the shared secret established at enrollment.
 
+![nextcloud](images/nextcloudotp.png)
+![authenticator](images/authenticator.jpg)
+
 ### Watching it extend to Grafana automatically
 
 Since Grafana was already wired up for SSO against Keycloak from the previous module, enabling MFA at the Keycloak/realm level meant Grafana logins started requiring it too, without touching Grafana's configuration at all. This is the actual payoff of centralizing authentication at the IdP: enforce MFA once, and every connected Service Provider inherits it, rather than configuring MFA separately and inconsistently per application.
+
+![grafanaotp](images/grafanaotp.png)
 
 ---
 
