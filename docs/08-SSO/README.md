@@ -16,9 +16,20 @@ Also nailed down the Identity Provider vs. Service Provider relationship that al
 
 Deployed Keycloak via Docker and configured it as the central IdP for the lab, using a dedicated `corp-realm` rather than the built-in `master` realm — `master` is meant for administering Keycloak itself, not for real end users authenticating into applications.
 
+![keycloak](images/keycloak_client.png)
+![realm](images/realm.png)
+![realm](images/realm2.png)
+
+
 ### Configuring SSO for Nextcloud and Grafana via OIDC
 
 Set up both Nextcloud and Grafana as OIDC Service Providers pointing at Keycloak. Nextcloud went smoothly. Grafana did not, and turned into the real troubleshooting exercise of this module.
+
+![sso](images/sso.png)
+![sso](images/sso2.png)
+![sso](images/grafana.png)
+
+
 
 ### Forgotten admin credentials
 
