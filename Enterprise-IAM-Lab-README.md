@@ -37,10 +37,10 @@ Full writeup: [`docs/00-lab-setup/local-attempt-and-pivot.md`](docs/00-lab-setup
 - [x] **Module 5** — Authentication Deep Dive
 - [x] **Module 6** — Service Accounts & Privileged Identities
 - [x] **Module 7** — Role Based Access Control (RBAC)
-- [ ] **Module 8** — PKI & Certificate Authority
-- [ ] **Module 9** — Single Sign-On (SSO)
-- [ ] **Module 10** — Multi-Factor Authentication (MFA)
-- [ ] **Module 11** — Identity Governance & Administration (IGA)
+- [x] **Module 8** — PKI & Certificate Authority
+- [x] **Module 9** — Single Sign-On (SSO)
+- [x] **Module 10** — Multi-Factor Authentication (MFA)
+- [x] **Module 11** — Identity Governance & Administration (IGA)
 - [ ] **Module 12** — Microsoft Entra ID: Fundamentals, Users & Groups
 - [ ] **Module 13** — Microsoft Entra ID: RBAC & Applications
 - [ ] *(additional features)*
