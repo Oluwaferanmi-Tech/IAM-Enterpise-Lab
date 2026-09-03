@@ -28,6 +28,7 @@ Set up both Nextcloud and Grafana as OIDC Service Providers pointing at Keycloak
 ![sso](images/sso.png)
 ![sso](images/sso2.png)
 ![sso](images/grafana.png)
+![sso](images/grafana2.png)
 
 
 
