@@ -1,12 +1,12 @@
 # Enterprise IAM Lab
 
-A hands-on Identity and Access Management lab built while preparing for the Microsoft SC-300 (Identity and Access Administrator) exam.
+A self-built enterprise Identity and Access Management environment — Active Directory, PKI, RBAC, SSO, MFA, Identity Governance, and Microsoft Entra ID — architected, deployed, and documented from scratch, including every real infrastructure problem hit along the way.
 
 ## Overview
 
-This repo documents a self-built enterprise IAM environment covering Active Directory, identity lifecycle management, authentication, RBAC, PKI, single sign-on, MFA, identity governance, and Microsoft Entra ID. It's built alongside a structured IAM course, with each module in this repo corresponding to a module in the course curriculum.
+This repo documents a working IAM environment spanning both on-premises and cloud identity: a Windows Server domain controller, a domain-joined client, and a Kali Linux box, all provisioned on Azure, running Active Directory alongside a self-hosted Keycloak SSO stack and Microsoft Entra ID.
 
-The goal isn't just to follow along — it's to have a working, documented environment that demonstrates practical IAM skills beyond what a certification alone shows.
+The goal wasn't to follow a checklist — it was to build something real enough to break, debug, and actually understand. Every module below is documented with what was built and, just as importantly, what went wrong getting there.
 
 ## Architecture
 
@@ -14,9 +14,11 @@ Three VMs, provisioned on Azure, sharing a single virtual network:
 
 | VM | Role |
 |---|---|
-| Windows Server 2025 | Domain Controller — Active Directory Domain Services, DNS, Group Policy |
+| Windows Server 2025 | Domain Controller — Active Directory Domain Services, DNS, Group Policy, AD CS, NPS |
 | Windows 11 | Domain-joined client machine |
-| Kali Linux | Security testing and identity attack-surface exploration |
+| Kali Linux | Keycloak (Identity Provider), Nextcloud and Grafana (Service Providers), security testing |
+
+Plus a Microsoft Entra ID tenant for cloud identity, users, groups, and Azure RBAC.
 
 *(Architecture diagram coming soon — see `/diagrams`)*
 
@@ -24,59 +26,73 @@ Three VMs, provisioned on Azure, sharing a single virtual network:
 
 The original plan was to run this entirely locally using a hypervisor. That ran into real, well-documented limitations — architecture mismatches and emulation constraints that made a stable local Windows Server environment impractical. Rather than keep fighting it, I pivoted to Azure.
 
-That turned out to be a feature, not a bug: it added hands-on Azure platform experience (resource groups, virtual networking, VM provisioning) directly relevant to SC-300, on top of the IAM concepts the lab was originally built for.
+That turned out to be a feature, not a bug: it added hands-on Azure platform experience (resource groups, virtual networking, VM provisioning, RBAC) directly relevant to SC-300, on top of the IAM concepts the lab was originally built for.
 
-Full writeup: [`docs/00-lab-setup/local-attempt-and-pivot.md`](docs/00-lab-setup/local-attempt-and-pivot.md)
+Full writeup: [`docs/00-lab-setup/README.md`](docs/00-lab-setup/README.md)
 
-## Progress
+## Roadmap
 
-- [x] **Module 1** — Introduction & Complete Lab Setup
-- [x] **Module 2** — Active Directory: Core Identity Store
-- [x] **Module 3** — Identity Lifecycle Management
-- [x] **Module 4** — Active Directory Hygiene
-- [x] **Module 5** — Authentication Deep Dive
-- [x] **Module 6** — Service Accounts & Privileged Identities
-- [x] **Module 7** — Role Based Access Control (RBAC)
-- [x] **Module 8** — PKI & Certificate Authority
-- [x] **Module 9** — Single Sign-On (SSO)
-- [x] **Module 10** — Multi-Factor Authentication (MFA)
-- [x] **Module 11** — Identity Governance & Administration (IGA)
-- [ ] **Module 12** — Microsoft Entra ID: Fundamentals, Users & Groups
-- [ ] **Module 13** — Microsoft Entra ID: RBAC & Applications
-- [ ] *(additional features)*
+| # | Topic | Status |
+|---|-------|--------|
+| 00 | [Lab Setup](docs/00-lab-setup/README.md) | ✅ Complete |
+| 01 | [Active Directory — Core Identity Store](docs/01-active-directory-core/README.md) | ✅ Complete |
+| 02 | [Identity Lifecycle Management](docs/02-identity-lifecycle-management/README.md) | ✅ Complete |
+| 03 | [Active Directory Hygiene](docs/03-active-directory-hygiene/README.md) | ✅ Complete |
+| 04 | [Authentication Deep Dive](docs/04-authentication-deep-dive/README.md) | ✅ Complete |
+| 05 | [Service Accounts & Privileged Identities](docs/05-service-accounts-privileged-identities/README.md) | ✅ Complete |
+| 06 | [Role Based Access Control (RBAC)](docs/06-rbac/README.md) | ✅ Complete |
+| 07 | [PKI & Certificate Authority](docs/07-pki-certificate-authority/README.md) | ✅ Complete |
+| 08 | [Single Sign-On (SSO)](docs/08-single-sign-on/README.md) | ✅ Complete |
+| 09 | [Multi-Factor Authentication (MFA)](docs/09-multi-factor-authentication/README.md) | ✅ Complete |
+| 10 | [Identity Governance & Administration (IGA)](docs/10-identity-governance-administration/README.md) | ✅ Complete |
+| 11 | [Microsoft Entra ID — Fundamentals, Users & Groups](docs/11-entra-id-fundamentals/README.md) | ✅ Complete |
+| 12 | [Microsoft Entra ID — RBAC & Applications](docs/12-entra-id-rbac-applications/README.md) | ✅ Complete |
+
+**Status: Lab build complete.** All 13 parts documented, on-prem and cloud. May continue adding to this over time as new topics or tools come up.
 
 ## Skills & Topics Covered
 
 **Identity Fundamentals**
-- Active Directory Domain Services (AD DS) installation, promotion, and domain design
-- DNS configuration in a domain environment
-- Organizational Unit (OU) design and identity lifecycle management
-- Group Policy Objects (GPOs) and security baselines
-- Authentication protocols and Windows domain authentication
+- Active Directory Domain Services — installation, forest/domain promotion, OU design
+- Group Policy Objects and security baselines
+- Full identity lifecycle: onboarding, offboarding, disable-before-delete retention
+- PowerShell automation of bulk AD operations via CSV-driven scripts
 
-**Access & Security**
-- Role Based Access Control (RBAC) design
-- Service accounts and privileged identity management
-- PKI and Certificate Authority setup
-- Single Sign-On (SSO) configuration
-- Multi-Factor Authentication (MFA)
-- Identity Governance & Administration (IGA)
+**Security & Governance**
+- Privileged account auditing, ACL hygiene, and AdminSDHolder
+- Honeypot/decoy account detection design
+- Role Based Access Control: group-based permissions, AD delegation, tiered administration (Tier 0/1/2)
+- Access validation testing (positive and negative), not just configuration
+- Identity Governance & Administration: access request/approval workflows, compliance and audit-trail reporting, IGA tooling landscape (SailPoint, Microsoft Entra ID Governance, One Identity Manager)
+
+**Authentication & Access**
+- Kerberos ticket-based authentication and Fine-Grained Password Policies (PSOs)
+- RADIUS authentication via NPS, including full client-to-server troubleshooting
+- PKI: internal Certificate Authority setup, certificate issuance and revocation, CRLs
+- Group Managed Service Accounts (gMSA) for credential rotation without human exposure
+- Single Sign-On via Keycloak, OAuth 2.0 / OIDC / SAML 2.0, multi-application integration
+- TOTP-based MFA with centralized enforcement across connected applications
 
 **Cloud Identity**
-- Microsoft Entra ID (Azure AD) — users, groups, RBAC, and enterprise applications
+- Microsoft Entra ID: users, groups, dynamic membership rules, B2B guest access
+- Azure RBAC: scope hierarchy (Management Group → Subscription → Resource Group → Resource) and permission inheritance
+- Privilege-sensitive role awareness (User Access Administrator vs. resource-access roles like Reader)
+- Cloud identity automation via Microsoft Graph / Cloud Shell scripting
 
 **Cloud Infrastructure & Troubleshooting**
 - Azure VM provisioning, virtual networking, and resource group management
-- Diagnosing Azure-specific platform issues (VM Agent connectivity, NSG rules, effective routes, Accelerated Networking) distinct from standard on-prem/local-hypervisor troubleshooting
-- Azure Serial Console and Cloud Shell for out-of-band VM access and diagnostics
-- Documenting infrastructure decisions and incident writeups as part of the engineering process
+- Diagnosing Azure-specific platform issues (VM Agent connectivity, DHCP-delivered management routes, NSG rules, Accelerated Networking) distinct from standard on-prem troubleshooting
+- Azure Serial Console and Cloud Shell for out-of-band access and diagnostics
+- Docker and Docker Compose deployment and credential/config troubleshooting
+- Diagnosing silent configuration failures (typo'd config keys, escape-character bugs, realm/scope mismatches) rather than ones with obvious error messages
 
 ## Tech Stack
 
-- **Cloud:** Microsoft Azure (Virtual Machines, Virtual Networks, Resource Groups)
-- **Server OS:** Windows Server 2025 (Active Directory Domain Services, DNS, Group Policy)
+- **Cloud:** Microsoft Azure (Virtual Machines, Virtual Networks, Resource Groups), Microsoft Entra ID
+- **Server OS:** Windows Server 2025 (AD DS, DNS, Group Policy, AD CS, NPS)
 - **Client OS:** Windows 11
-- **Identity platform:** Microsoft Entra ID (Azure AD)
+- **Identity Provider:** Keycloak (Docker), Microsoft Entra ID
+- **Service Providers:** Nextcloud, Grafana
 - **Security tooling:** Kali Linux
 - **Target certification:** SC-300 (Microsoft Identity and Access Administrator)
 
@@ -91,7 +107,7 @@ iam-enterprise-lab/
 │   ├── 02-identity-lifecycle-management/
 │   ├── 03-active-directory-hygiene/
 │   ├── 04-authentication-deep-dive/
-│   ├── 05-service-accounts-privileged/
+│   ├── 05-service-accounts-privileged-identities/
 │   ├── 06-rbac/
 │   ├── 07-pki-certificate-authority/
 │   ├── 08-single-sign-on/
@@ -104,8 +120,8 @@ iam-enterprise-lab/
 └── screenshots/
 ```
 
-Each `docs/` module folder contains its own `README.md` (what I did, steps, issues hit and how they were resolved) and an `images/` subfolder with supporting screenshots.
+Each module folder contains its own `README.md` (what was built, the steps, and issues hit and how they were resolved) and an `images/` subfolder with supporting screenshots.
 
 ## Connect
 
-Following along on [LinkedIn](https://www.linkedin.com/in/oluwaferanmi-bamikole-44a222309/) as this lab progresses.
+Following along on [LinkedIn](https://www.linkedin.com/in/oluwaferanmi-bamikole-44a222309/).
